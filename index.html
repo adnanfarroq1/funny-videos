@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laugh Factory 🎥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: #2d2d2d;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .funny-button {
+            display: block;
+            width: 200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .funny-button:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2d2d2d;
+            margin-top: 3rem;
+        }
+
+        .dancing-text {
+            animation: dance 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(3deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>😂 Laugh Factory 🍿</h1>
+        <p>Warning: Side effects may include uncontrollable laughter!</p>
+        <button class="funny-button" onclick="throwConfetti()">Emergency Laughs! 🚨</button>
+    </header>
+
+    <main>
+        <div class="video-grid">
+            <!-- Funny YouTube Embeds (Replace video IDs) -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/jofNR_WkoCE?autoplay=0&controls=1" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Cat vs Cucumber</h3>
+                    <p>When veggies attack! 🥒🐈</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/XqZsoesa55w?autoplay=0&controls=1" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Baby Shark Dance</h3>
+                    <p>Do do do do do... 🦈</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Epic Fail Compilation</h3>
+                    <p>Don't try this at home! 🤦♂️</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="dancing-text">Made with ❤️ and 😂 by The Laugh Squad</p>
+        <button class="funny-button" onclick="playSurprise()">Surprise! 🎁</button>
+    </footer>
+
+    <script>
+        // Confetti effect
+        function throwConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff4757'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Surprise function
+        function playSurprise() {
+            const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/257/257-preview.mp3');
+            audio.play();
+            document.body.style.transform = 'rotate(1deg)';
+            setTimeout(() => document.body.style.transform = 'rotate(-1deg)', 100);
+            setTimeout(() => document.body.style.transform = 'rotate(0deg)', 200);
+        }
+
+        // Add falling animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add emoji support
+        document.body.appendChild(document.createElement('script')).src = 
+            '';
+    </script>
+</body>
+</html>                                                                                                                                                                                                                                  
